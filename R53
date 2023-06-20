@@ -1,0 +1,10 @@
+- hosts: localhost
+  connection: local
+    tasks:
+      - name: fetch record
+        route53:
+          command: get
+          record: blue
+          type: CNAME
+          zone: domain.com
+        register: record
