@@ -2,4 +2,4 @@
   become: yes
   hosts: all
   roles: 
-      - "{{COMPONENT}}"
+      - frontend
