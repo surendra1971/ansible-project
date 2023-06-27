@@ -18,6 +18,7 @@ pipeline {
             when { branch pattern: "feature-.*", comparator: "REGEXP"}
             steps {
                 sh  "env"
+                sh  "echo Lint Checks"
                 sh  "echo Running aganst the feature branch whose name is ${GIT_BRANCH}"
                 sh  "echo Lint Checks Completed"
             }
