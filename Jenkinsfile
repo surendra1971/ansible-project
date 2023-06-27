@@ -7,7 +7,7 @@ pipeline{
         string(name: 'COMPONENT', defaultValue: 'mongodb' , description: 'enter the name of the component')
     }
     stages{
-        stage(''){
+        stage('Ansiblr Dry Run'){
             steps{
                 sh '''
 
