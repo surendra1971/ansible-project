@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        SSHCRED         = credentials('SSH_CRED') 
+        SSHCRED= credentials('SSH_CRED') 
     }
     parameters {
         string(name: 'COMPONENT', defaultValue: 'mongodb' , description: 'enter the name of the component')
@@ -34,7 +34,9 @@ pipeline {
         }
 
         stage('Promoting Code to Prod Branch') {            
-           
+           when {
+                branch 'main'
+            }
             
             steps {
                 sh "echo Merging the feature branch to PROD Branch"
