@@ -1,15 +1,15 @@
 pipeline {
     agent any
     environment {
-        SSHCRED         = credentials('SSH_CRED') 
+        SSHCRED= credentials('SSH_CRED') 
     }
     parameters {
         string(name: 'COMPONENT', defaultValue: 'mongodb' , description: 'enter the name of the component')
     }
     stages {
-
         stage('Ansible Code Scan') {
             steps {
+                sh  "env"
                 sh  "echo Code Scan Completed"
             }
         }
@@ -25,7 +25,7 @@ pipeline {
         }
 
         stage('Ansible Dry Run') {
-            
+            when { branch pattern: "PR-.*", comparator: "REGEXP"}
             steps {
                 sh ''' 
                     ansible-playbook robot-dryrun.yaml -e COMPONENT=${COMPONENT} -e ansible_user=centos -e ansible_password=${SSHCRED_PSW} -e ENV=dev
