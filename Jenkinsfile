@@ -7,9 +7,9 @@ pipeline {
         string(name: 'COMPONENT', defaultValue: 'mongodb' , description: 'enter the name of the component')
     }
     stages {
-
         stage('Ansible Code Scan') {
             steps {
+                sh  "env"
                 sh  "echo Code Scan Completed"
             }
         }
